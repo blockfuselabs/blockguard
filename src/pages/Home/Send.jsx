@@ -51,11 +51,11 @@ const Send = () => {
       
       const send = await sendTransaction(inputAmount, inputAddress);
 
-      if(send){
+      if(send.status){
         toast.success("Transaction sent successfully")
         navigate("/send-receive")
       }else{
-        toast.error("An error occcurred")
+        toast.error(send.message)
       }
       console.log("Transaction sent successfully");
     } catch (error) {
