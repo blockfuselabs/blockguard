@@ -96,7 +96,8 @@ export async function signTX2(data) {
 export async function sendTransaction(amount, receiver) {
     const privateKey = localStorage.getItem("privateKey");
     console.log(privateKey)
-    const provider = new ethers.providers.JsonRpcProvider("https://sepolia.infura.io/v3/2fa89a3017a64226a09f8d4ad65aaf83"); // Replace with your Infura Project ID
+    const provider = new ethers.providers.JsonRpcProvider("https://sepolia.infura.io/v3/2fa89a3017a64226a09f8d4ad65aaf83");
+    const network = await provider.getNetwork();
     const wallet = new ethers.Wallet(privateKey, provider);
 
     // Create transaction object
@@ -106,7 +107,7 @@ export async function sendTransaction(amount, receiver) {
         gasLimit: 21000,
         gasPrice: await provider.getGasPrice(),
         nonce: await provider.getTransactionCount(wallet.address),
-        chainId: 11155111
+        chainId: network.chainId
     };
 
     try {
