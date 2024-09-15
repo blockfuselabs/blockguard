@@ -13,39 +13,22 @@ const SignUp = () => {
 
   const handleCreateWallet = () => {
   if (isChecked) {
-    // Hash the password using CryptoJS
-    // const hashedPassword = CryptoJS.SHA256(password).toString();
-    // console.log('Hashed Password:', hashedPassword);
-
-    // Proceed to the next page
     navigate('/create-password'); 
   } else {
     alert('Please agree to the terms first.');
   }
 };
-
-// const handleSubmit = async (e) => {
-//   e.preventDefault();
-//   try{
-//     const result = await ('https://block-guard-wallet.onrender.com/wallets/create-new-wallet', {
-//       p
-//     })
-//   }
-// }
-
-  const handleImportWallet = () => {
-    if (isChecked) {
-      navigate('/import-wallet'); 
-    } else {
-      alert('Please agree to the terms first.');
-    }
-  };
-
+  // const handleImportWallet = () => {
+  //   if (isChecked) {
+  //     navigate('/import-wallet'); 
+  //   } else {
+  //     alert('Please agree to the terms first.');
+  //   }
+  // };
   return (
     <div className='flex flex-col items-center justify-center mt-8'>
       <div className='flex flex-col items-center space-y-2'>
-        <h1 className='text-primary-400 text-xl'>Let's get started</h1>
-        <p className='text-primary-400'>Create Wallet</p>
+        <h1 className='text-primary-400 text-2xl font-bold'>Create Your Wallet</h1>
       </div>
       <div className='space-y-6 flex flex-col items-center mt-8'>
         <img src={Logo} alt='Blockguard Logo' className='w-24' />
@@ -64,17 +47,17 @@ const SignUp = () => {
         </div>
         <div className='flex flex-col items-center space-y-5'>
           <button
-            className='bg-gradient-to-r from-primary-50 via-primary-200 to-primary-300 text-primary-400 w-[250px] py-2 rounded-full'
+            className='bg-green-500 hover:bg-primary-600 mt-4 text-primary-400 w-[250px] py-2 rounded-full'
             onClick={handleCreateWallet}
           >
             Create a new wallet
           </button>
-          <button
+          {/* <button
             className='border-2 border-primary-300 text-primary-400 w-[250px] py-2 rounded-full'
             onClick={handleImportWallet}
           >
             Import an existing wallet
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
