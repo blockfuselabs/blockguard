@@ -101,19 +101,17 @@ export async function sendTransaction(amount, receiver) {
 
     // Create transaction object
     const tx = {
-        to: receiver, // Replace with recipient address
-        value: ethers.utils.parseEther(amount), // Amount to send
-        gasLimit: 21000, // Gas limit for a simple transfer
-        gasPrice: await provider.getGasPrice(), // Gas price
-        nonce: await provider.getTransactionCount(wallet.address), // Nonce
-        chainId: 11155111 // Sepolia testnet chain ID
+        to: receiver,
+        value: ethers.utils.parseEther(amount),
+        gasLimit: 21000,
+        gasPrice: await provider.getGasPrice(),
+        nonce: await provider.getTransactionCount(wallet.address),
+        chainId: 11155111
     };
 
     try {
-        // Send the transaction
         const txResponse = await wallet.sendTransaction(tx);
         console.log("Transaction sent:", txResponse);
-        // Wait for the transaction to be mined
         const receipt = await txResponse.wait();
         console.log("Transaction mined:", receipt);
 
