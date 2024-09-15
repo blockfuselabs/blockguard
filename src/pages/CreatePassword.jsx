@@ -14,20 +14,18 @@ const CreatePassword = () => {
   
   const navigate = useNavigate();
 
-  // Handle checkbox
+  
   const handleCheckbox = (e) => {
     setIsChecked(e.target.checked);
   };
 
-  // Toggle functions for password visibility
+  
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
   const toggleConfirmPasswordVisibility = () =>
     setShowConfirmPassword(!showConfirmPassword);
 
 
-  // const handleSubmit = () =>{
-  //   navigate("/secret-recovery")
-  // }
+
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,13 +48,13 @@ const CreatePassword = () => {
       const PrivateKey = HdWallet.privateKey;
       const publicKey= HdWallet.publicKey;
 
-      //Save to local Storage
+
       localStorage.setItem('mnemonic', Mnemonic);
       localStorage.setItem("address", address)
       localStorage.setItem("privateKey", PrivateKey)
       localStorage.setItem("PublicKey", publicKey)
 
-      // Example account data
+    
       let accounts = [
         { name: "Account 1", publicAddress: address, profilePicUrl: blockies.create({ seed: address }).toDataURL() }
       ];
@@ -92,7 +90,7 @@ const CreatePassword = () => {
           <input
             type={showPassword ? "text" : "password"}
             value={password}
-            onChange={(e) => setPassword(e.target.value)} // Update password state
+            onChange={(e) => setPassword(e.target.value)}
             className="border-2 border-gray-300 bg-transparent rounded-full px-4 text-primary-400 text-sm p-2 w-full pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="New Password (8 characters min)"
           />
@@ -112,7 +110,7 @@ const CreatePassword = () => {
           <input
             type={showConfirmPassword ? "text" : "password"}
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)} // Update confirm password state
+            onChange={(e) => setConfirmPassword(e.target.value)}
             className="border-2 border-gray-300 bg-transparent rounded-full text-primary-400 px-4 text-sm p-2 w-full pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Confirm Password"
           />
