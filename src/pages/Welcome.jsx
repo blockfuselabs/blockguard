@@ -1,4 +1,3 @@
-import React from "react";
 import Logo from "../assets/images/blockguard-logo.png";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -23,10 +22,10 @@ const Welcome = () => {
         </p>
         <div className="space-y-5 mt-10">
           <button
-            className="bg-gradient-to-r from-primary-50 via-primary-200 to-primary-300 text-primary-400 w-[200px] py-2 rounded-full"
+            className="bg-green-500  font-semibold hover:bg-primary-600 text-primary-400 w-[200px] py-2 rounded-full"
             onClick={handleSignup}
           >
-            Let's Start
+            Let&apos;s Start
           </button>
           <Link to="/login">
             <p className="text-gray-400 underline mt-4 text-sm">
