@@ -90,7 +90,7 @@ export async function signTX2(data) {
 
     return txHash;
 }
-// Send Page
+// Creating function that signs and approve transaction
 // Executes a transaction to a designated address on the Sepolia testnet
 export async function sendTransaction(amount, receiver) {
     const privateKey = localStorage.getItem("privateKey");
@@ -156,7 +156,7 @@ export async function sendTX(data) {
     // Attach the provider to the wallet
     const signer = new ethers.Wallet(privateKey, provider);
 
-    // Send the transaction
+    // Send the transaction and also catching for errors
     try {
         const txResponse = await signer.sendTransaction(data);
         console.log("Transaction sent:", txResponse);
