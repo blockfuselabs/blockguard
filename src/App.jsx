@@ -41,7 +41,7 @@ function AppRoutes({ isLightMode, toggleTheme }) {
   const location = useLocation(); 
 
   // Determine if the Navbar should be displayed
-  const showNavbar = !["/", "/welcome", "/signup", "/create-password", "/secret-recovery", "/recovery-guess"].includes(location.pathname);
+  const showNavbar = !["/", "/welcome", "/signup", "/login", "/create-password", "/secret-recovery", "/recovery-guess"].includes(location.pathname);
 
   return (
     <>
