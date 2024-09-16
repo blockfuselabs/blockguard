@@ -18,7 +18,7 @@ const Login = () => {
     <div className="min-h-screen flex flex-col items-center">
       {/* Row One: Login Heading at the top */}
       <div className="mt-8">
-        <h1 className="text-xl text-primary-400">Login</h1>
+        <h1 className="text-xl text-primary-850 dark:text-primary-850 font-semibold">Login</h1>
       </div>
 
       {/* Row Two: Centered items */}
@@ -26,19 +26,19 @@ const Login = () => {
         <div className="relative flex items-center w-[300px]">
           <input
             type={showPassword ? 'text' : 'password'}
-            className="border-2 border-gray-300 bg-transparent rounded-full px-4 text-primary-400 text-sm p-2 w-full pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border-2 border-gray-300 bg-transparent rounded-full px-4 text-slate-800 dark:text-white text-sm p-2 w-full pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Enter password"
           />
           <div className="absolute right-3 cursor-pointer" onClick={togglePasswordVisibility}>
-            {showPassword ? <IoEyeOffOutline className="text-white" /> : <IoEyeOutline className="text-white" />}
+            {showPassword ? <IoEyeOffOutline className="text-slate-800 dark:text-white" /> : <IoEyeOutline className="text-slate-800 dark:text-white" />}
           </div>
         </div>
 
-        <button className="w-[250px] bg-gradient-to-r from-primary-50 via-primary-200 to-primary-300 rounded-full py-2 text-primary-400 hover:opacity-70" onClick={handleLogin}>
+        <button className="w-[250px] bg-gradient-to-r from-primary-50 via-primary-200 to-primary-300 rounded-full py-2 text-slate-800 dark:text-white hover:opacity-70" onClick={handleLogin}>
           Unlock
         </button>
         <Link to="/signup">
-          <p className="text-gray-400 underline">I don't have an account</p>
+          <p className="text-slate-700 dark:text-gray-200 underline">I don't have an account</p>
         </Link>
       </div>
     </div>

@@ -116,12 +116,12 @@ const Send = () => {
   };
 
   return (
-    <div className="flex flex-col items-center text-center mt-5 space-y-8">
+    <div className="flex flex-col items-center text-center mt-5 space-y-3">
       {/* Row From Section */}
       <div className="space-y-2 w-72">
-        <h1 className="text-primary-400 text-start ml-6">From</h1>
+        <h1 className="text-slate-700 dark:text-white text-start ml-6">From</h1>
         <button
-          className="flex items-center rounded-full border-2 text-primary-400 text-sm w-full h-12 px-3"
+          className="flex items-center rounded-full border-2 text-slate-700 dark:text-white text-sm w-full h-12 px-3"
           onClick={toggleDropdown}
         >
           <div className="flex items-center space-x-2">
@@ -134,7 +134,7 @@ const Send = () => {
               <span>
                 {selectedAccount ? selectedAccount.name : "Select Account"}
               </span>
-              <span className="text-gray-500">
+              <span className="text-slate-700 dark:text-white ">
                 {selectedAccount
                   ? truncateAddress(selectedAccount.publicAddress)
                   : ""}
@@ -148,7 +148,7 @@ const Send = () => {
 
         {/* Dropdown Menu */}
         {isDropdownOpen && (
-          <div className="mt-2 bg-primary-900 border rounded-md shadow-lg w-full">
+          <div className="mt-2 bg-slate-400 border rounded-md shadow-lg w-full">
             {accounts.map((account, index) => (
               <button
                 key={index}
@@ -172,13 +172,13 @@ const Send = () => {
 
       {/* Row Amount Section */}
       <div className="space-y-1 w-72">
-        <h1 className="text-primary-400 text-start ml-6">Amount</h1>
+        <h1 className="text-slate-700 dark:text-white  text-start ml-6">Amount</h1>
         <div className="relative flex items-center">
           <input
             type="number"
             value={inputAmount}
             onChange={(e) => setInputAmount(e.target.value)}
-            className="border-2 border-gray-300 bg-transparent rounded-full text-primary-400 text-sm p-3 w-full pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border-2 border-gray-300 bg-transparent rounded-full text-slate-700 dark:text-white text-sm p-3 px-5 w-full pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Input amount"
           />
         </div>
@@ -186,20 +186,20 @@ const Send = () => {
 
       {/* Row To Account Section */}
       <div className="space-y-1 w-72">
-        <h1 className="text-primary-400 text-start ml-6">To</h1>
+        <h1 className="text-slate-700 dark:text-white text-start ml-6">To</h1>
         <div className="relative flex items-center">
           <input
             type="text"
             value={inputAddress}
             onChange={(e) => setInputAddress(e.target.value)}
-            className="border-2 border-gray-300 bg-transparent rounded-full text-primary-400 text-sm p-3 w-full pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border-2 border-gray-300 bg-transparent rounded-full text-slate-700 dark:text-white  text-sm p-3 px-5 w-full pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Enter public address or ENS name"
           />
           <label
             htmlFor="qr-upload"
-            className="absolute right-3 text-gray-400 cursor-pointer"
+            className="absolute right-3 text-gray-700 cursor-pointer"
           >
-            <AiOutlineQrcode className="text-xl mr-3" />
+            <AiOutlineQrcode className="text-2xl mr-3" />
             <input
               id="qr-upload"
               type="file"
@@ -210,30 +210,6 @@ const Send = () => {
           </label>
         </div>
       </div>
-
-      {/* Row Accounts Section */}
-      {/* <div className="w-72 space-y-2">
-        <h1 className="text-primary-400 text-start ml-2 border-b-2 border-b-primary-600 border-spacing-8">
-          Your Accounts ({accounts.length})
-        </h1>
-        {accounts.map((account, index) => (
-          <div key={index} className="flex items-center py-2 gap-2">
-            <img
-              src={account.profilePicUrl}
-              alt="profile picture"
-              className="w-8 h-8 rounded-full"
-            />
-            <div className="flex flex-col">
-              <h1 className="text-primary-400 font-semibold text-left">
-                {account.name}
-              </h1>
-              <p className="text-primary-400 text-left">
-                {truncateAddress(account.publicAddress)}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div> */}
 
       {loading && (
         <RotatingLines
@@ -251,11 +227,11 @@ const Send = () => {
 
       {/* Row Send and Cancel Button Section */}
       <div className="space-x-6 space-y-9">
-        <button className="w-32 border-2 border-primary-300 rounded-full p-1 text-primary-400 hover:bg-slate-200 hover:text-primary-50">
+        <button className="w-32 border-2 border-primary-850 rounded-full p-1 text-slate-700 dark:text-white  hover:bg-slate-300 hover:text-primary-850">
           Cancel
         </button>
         <button
-          className="w-32 bg-gradient-to-r from-primary-50 via-primary-200 to-primary-300 rounded-full p-1 text-primary-400 hover:opacity-70"
+          className="w-32 bg-primary-850 rounded-full p-1 text-slate-700 dark:text-white  hover:opacity-70"
           onClick={handleSend}
           disabled={loading}
         >

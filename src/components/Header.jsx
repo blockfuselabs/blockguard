@@ -41,15 +41,20 @@ const Header = ({ isLightMode, toggleTheme }) => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  // Debugging output
+  useEffect(() => {
+    console.log("Current Pathname:", location.pathname);
+  }, [location.pathname]);
+
   return (
     <div
       className={`flex items-center ${
-        isLightMode ? "bg-gray-100" : "bg-primary-950"
+        isLightMode ? "bg-slate-800" : "bg-gray-100"
       } px-7 py-2`}
     >
       {/* Backward Icon */}
       {location.pathname !== "/" && (
-        <div className="flex bg-[#50C878] p-1 rounded-xl flex-grow-0">
+        <div className="flex bg-primary-850 dark:bg-slate-700 p-1 rounded-xl flex-grow-0">
           {/* Navigate one step back in the history */}
           <button onClick={() => navigate(-1)} className="text-primary-400">
             <IoIosArrowBack className="text-xl font-bold" />
@@ -63,45 +68,47 @@ const Header = ({ isLightMode, toggleTheme }) => {
       {/* Right Side Buttons */}
       <div className="flex items-center gap-4 relative">
         {/* Notification Bell with Dropdown */}
-        <div className="relative">
-          <IoNotifications
-            className="text-[#50C878] h-6 w-6 cursor-pointer"
-            onClick={toggleDropdown}
-          />
-          {/* Dropdown Menu */}
-          {isDropdownOpen && (
-            <div className="absolute right-[-50px] mt-2 w-64 bg-primary-400 rounded-md shadow-lg border border-gray-300 z-10">
-              <h3 className="text-primary-500 font-bold px-4 py-2">
-                Notifications
-              </h3>
-              <ul className="divide-y divide-gray-500">
-                {notifications.length > 0 ? (
-                  notifications.map((notification) => (
-                    <li
-                      key={notification.id}
-                      className="px-4 py-3 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      {notification.type === "transaction" ? (
-                        <span className="font-medium text-primary-500">
-                          Transaction:{" "}
-                        </span>
-                      ) : (
-                        <span className="font-medium text-primary-50">
-                          Update:{" "}
-                        </span>
-                      )}
-                      {notification.message}
+        {location.pathname === "/send-receive" && (
+          <div className="relative">
+            <IoNotifications
+              className="text-primary-850 dark:text-slate-500 h-6 w-6 cursor-pointer"
+              onClick={toggleDropdown}
+            />
+            {/* Dropdown Menu */}
+            {isDropdownOpen && (
+              <div className="absolute right-[-50px] mt-2 w-64 bg-gray-200 dark:bg-slate-700 rounded-md shadow-lg border border-gray-300 z-10">
+                <h3 className="text-primary-850 dark:text-white font-bold px-4 py-2">
+                  Notifications
+                </h3>
+                <ul className="divide-y divide-gray-500 dark:divide-gray-200">
+                  {notifications.length > 0 ? (
+                    notifications.map((notification) => (
+                      <li
+                        key={notification.id}
+                        className="px-4 py-3 text-sm text-gray-700 dark:text-white hover:bg-gray-100"
+                      >
+                        {notification.type === "transaction" ? (
+                          <span className="font-medium text-green-500">
+                            Transaction:{" "}
+                          </span>
+                        ) : (
+                          <span className="font-medium text-red-400">
+                            Update:{" "}
+                          </span>
+                        )}
+                        {notification.message}
+                      </li>
+                    ))
+                  ) : (
+                    <li className="px-4 py-3 text-sm text-gray-700">
+                      No notifications yet.
                     </li>
-                  ))
-                ) : (
-                  <li className="px-4 py-3 text-sm text-gray-700">
-                    No notifications yet.
-                  </li>
-                )}
-              </ul>
-            </div>
-          )}
-        </div>
+                  )}
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Theme Toggle Button */}
         <button onClick={toggleTheme} className="h-10 w-10 rounded-lg p-2">

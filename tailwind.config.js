@@ -4,7 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  lightMode:"class",
+  darkMode:"class",
   theme: {
     extend: {
       colors: {
@@ -19,7 +19,7 @@ export default {
           700: "#5d18b4",
           800: "#4f189f",
           // Emerald green
-          850: "##50C878",
+          850: "#50C878",
           900: "#af90e6",
           950: "#221F3A"
         }

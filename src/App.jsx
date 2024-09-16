@@ -31,7 +31,6 @@ import Transactions from "./pages/Transactions";
 
 //Signup Imports
 import SerectRecovery from "./pages/SerectRecovery";
-import SerectRecoveryHidden from "./pages/SerectRecoveryHidden";
 import RecoveryGuess from "./pages/RecoveryGuess";
 import Login from "./components/Login/Login";
 import SignUp from "./pages/SignUp";
@@ -47,10 +46,11 @@ function AppRoutes({ isLightMode, toggleTheme }) {
   return (
     <>
     <ToastContainer />
-    <div className={`w-[350px] h-[600px] overflow-hidden ${isLightMode ? "bg-gray-100 text-primary-950" : "bg-primary-950"}`}>
+    <div className={`w-[350px] h-[600px] overflow-hidden ${isLightMode ? "bg-slate-800 text-primary-950" : "bg-gray-100"}`}>
       <Header isLightMode={isLightMode} toggleTheme={toggleTheme} />
       <Routes>
         <Route path="/" element={<Welcome />} />
+        <Route path="/welcome" element={<Welcome />} />
         <Route path="/login" element={<Login />} />
         <Route path="/send-receive" element={<Home />} />
         <Route path="/send-token" element={<Send />} />
@@ -71,7 +71,6 @@ function AppRoutes({ isLightMode, toggleTheme }) {
         <Route path="/statistics" element={<Statistics />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/secret-recovery" element={<SerectRecovery />} />
-        <Route path="/secret-Recovery-hidden" element={<SerectRecoveryHidden />} />
         <Route path="/recovery-guess" element={<RecoveryGuess />} />
       </Routes>
       {showNavbar && <Navbar />}
@@ -86,8 +85,15 @@ function App() {
   // Function to toggle between dark and light mode
   const toggleTheme = () => {
     setIsLightMode(!isLightMode);
-    document.body.classList.toggle("light", !isLightMode); 
+    if (!isLightMode) {
+      document.body.classList.add("dark");
+      document.body.classList.remove("light");
+    } else {
+      document.body.classList.add("light");
+      document.body.classList.remove("dark");
+    }
   };
+  
 
   return (
     <Router>

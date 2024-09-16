@@ -28,7 +28,8 @@ const SignUp = () => {
   return (
     <div className='flex flex-col items-center justify-center mt-8'>
       <div className='flex flex-col items-center space-y-2'>
-        <h1 className='text-primary-400 text-2xl font-bold'>Create Your Wallet</h1>
+        <h1 className='text-primary-850 text-xl'>Let's get started</h1>
+        <p className='text-slate-700 dark:text-white'>Create Wallet</p>
       </div>
       <div className='space-y-6 flex flex-col items-center mt-8'>
         <img src={Logo} alt='Blockguard Logo' className='w-24' />
@@ -38,7 +39,7 @@ const SignUp = () => {
             className='w-18'
             onChange={handleCheckboxChange}
           />
-          <p className='text-primary-400'>
+          <p className='text-slate-700 dark:text-white'>
             I agree to Blockguard's{' '}
             <a href='#' target='_blank'>
               <span className='text-blue-500 underline'>Terms of Use</span>
@@ -47,13 +48,13 @@ const SignUp = () => {
         </div>
         <div className='flex flex-col items-center space-y-5'>
           <button
-            className='bg-green-500 hover:bg-primary-600 mt-4 text-primary-400 w-[250px] py-2 rounded-full'
+            className='bg-primary-850 hover:bg-opacity-70 text-slate-700 dark:text-white w-[250px] py-2 rounded-full'
             onClick={handleCreateWallet}
           >
             Create a new wallet
           </button>
           {/* <button
-            className='border-2 border-primary-300 text-primary-400 w-[250px] py-2 rounded-full'
+            className='border-2 border-primary-300 text-slate-700 dark:text-white w-[250px] py-2 rounded-full'
             onClick={handleImportWallet}
           >
             Import an existing wallet

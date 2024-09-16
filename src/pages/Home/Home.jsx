@@ -104,9 +104,6 @@ const Home = () => {
   }, [selectedNetwork]);
   
 
-
-  
-
   // Toggle the dropdown
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -124,12 +121,12 @@ const Home = () => {
     <div className="flex flex-col items-center text-center mt-2 space-y-5">
       {/* Balance Row */}
       <div className="space-y-3 mb-6">
-        <h1 className="text-white text-xl">Available Balance</h1>
-        <p className="text-primary-400">{balance.toFixed(4)} {selectedNetwork.name === "Ethereum" ? "ETH" : "SepoliaETH"}</p>
+        <h1 className="text-slate-700 dark:text-white text-xl">Available Balance</h1>
+        <p className="text-slate-700 dark:text-white">{balance.toFixed(4)} {selectedNetwork.name === "Ethereum" ? "ETH" : "SepoliaETH"}</p>
         <div className="relative">
           <button
             onClick={toggleDropdown}
-            className="flex items-center justify-center space-x-4 rounded-full bg-purple-400 text-white w-40 py-1"
+            className="flex items-center justify-center space-x-4 rounded-full bg-primary-850 text-slate-700 dark:text-white w-40 py-1"
           >
             <FaRegCircleDot className="mr-2" style={{ color: selectedNetwork.color }} />
             <span>{selectedNetwork.name}</span>
@@ -157,44 +154,44 @@ const Home = () => {
       <div className="flex space-x-8">
         <div className="flex flex-col items-center">
           <button
-            className="rounded-full border-2 border-primary-900 p-3 flex items-center justify-center"
+            className="rounded-full border-2 border-primary-850 p-3 flex items-center justify-center"
             onClick={() => navigate("/send-token")}
           >
-            <BsSendFill size={20} className="text-primary-50" />
+            <BsSendFill size={20} className="text-primary-850" />
           </button>
-          <span className="mt-1 text-white">Send</span>
+          <span className="mt-1 text-slate-700 dark:text-white">Send</span>
         </div>
         <div className="flex flex-col items-center">
           <button
-            className="rounded-full border-2 border-primary-900 p-3 flex items-center justify-center"
+            className="rounded-full border-2 border-primary-850 p-3 flex items-center justify-center"
             onClick={() => navigate("/receive-token")}
           >
-            <MdCallReceived size={20} className="text-primary-50" />
+            <MdCallReceived size={20} className="text-primary-850" />
           </button>
-          <span className="mt-1 text-white">Receive</span>
+          <span className="mt-1 text-slate-700 dark:text-white">Receive</span>
         </div>
       </div>
 
       {/* Tokens Row */}
       <div>
         <div className="flex px-4">
-          <h2 className="text-primary-400">Tokens</h2>
+          <h2 className="text-slate-700 dark:text-white">Tokens</h2>
         </div>
-        <div className="bg-[#373073] w-[350px] h-screen rounded-2xl">
+        <div className="bg-gray-200 dark:bg-slate-700 w-[350px] h-screen rounded-2xl">
           <div className="flex items-center justify-between px-4">
             <div className="flex items-center py-2 gap-2">
-              <span className="border-2 border-primary-900 rounded-full p-1">
+              <span className="border-2 border-primary-850 rounded-full p-1">
                 <FaEthereum />
               </span>
               <div className="flex flex-col items-start">
-                <h1 className="text-primary-400 font-semibold">ETH</h1>
-                <p className="text-primary-400">Ethereum</p>
+                <h1 className="text-slate-700 dark:text-white font-semibold">ETH</h1>
+                <p className="text-slate-700 dark:text-white">Ethereum</p>
               </div>
             </div>
             <div>
               <div className="flex flex-col items-start">
-                <h1 className="text-primary-400 font-semibold">{balance.toFixed(4)} ETH</h1>
-                <p className="text-primary-400">${dollarEquivalent}</p>
+                <h1 className="text-slate-700 dark:text-white font-semibold">{balance.toFixed(4)} ETH</h1>
+                <p className="text-slate-700 dark:text-white">${dollarEquivalent}</p>
               </div>
             </div>
           </div>

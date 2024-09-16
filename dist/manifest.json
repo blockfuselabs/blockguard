@@ -1,0 +1,25 @@
+{
+    "manifest_version": 3,
+    "name": "BlockGuard Wallet",
+    "version": "1.0.0",
+    "icons": {
+    "16": "blockguard-icon.png",
+    "32": "blockguard-icon.png",
+    "48": "blockguard-icon.png",
+    "128": "blockguard-icon.png"
+  },
+    "action": {
+      "default_popup": "index.html", 
+      "default_icon": {
+        "32": "blockguard-icon.png"
+      }
+    },
+    "permissions": [
+      "scripting"
+    ],
+    "host_permissions": [
+      "http://*/*",
+      "https://*/*"
+    ]
+  }
+  
