@@ -170,7 +170,7 @@ const RecoveryGuess = () => {
       </div>
       <button
         type="submit"
-        className="mt-6 ml-11 text-white text-lg rounded-3xl px-2 py-1 w-[251px] bg-gradient-to-r from-primary-50 to-primary-100 hover:bg-opacity-75"
+        className="mt-6 ml-11 text-white text-lg rounded-3xl px-2 py-1 w-[251px]  bg-emerald-500 hover:bg-opacity-75"
       >
         Next
       </button>
