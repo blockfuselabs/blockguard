@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { IoNotifications } from "react-icons/io5";
+import { useEffect, useState } from "react";
+// import { IoNotifications } from "react-icons/io5";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Header = ({ isLightMode, toggleTheme }) => {
   const location = useLocation();
   const navigate = useNavigate(); // Use useNavigate to access navigation functionality
-  const [notifications, setNotifications] = useState([]);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  // const [notifications, setNotifications] = useState([]);
+  // const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [notificationId, setNotificationId] = useState(0);
 
   useEffect(() => {
@@ -37,9 +37,9 @@ const Header = ({ isLightMode, toggleTheme }) => {
     return () => clearInterval(interval);
   }, [notificationId]);
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  // const toggleDropdown = () => {
+  //   setIsDropdownOpen(!isDropdownOpen);
+  // };
 
   // Debugging output
   useEffect(() => {
@@ -68,13 +68,13 @@ const Header = ({ isLightMode, toggleTheme }) => {
       {/* Right Side Buttons */}
       <div className="flex items-center gap-4 relative">
         {/* Notification Bell with Dropdown */}
-        {location.pathname === "/send-receive" && (
+        {/* {location.pathname === "/send-receive" && (
           <div className="relative">
             <IoNotifications
               className="text-primary-850 dark:text-slate-500 h-6 w-6 cursor-pointer"
               onClick={toggleDropdown}
             />
-            {/* Dropdown Menu */}
+            Dropdown Menu
             {isDropdownOpen && (
               <div className="absolute right-[-50px] mt-2 w-64 bg-gray-200 dark:bg-slate-700 rounded-md shadow-lg border border-gray-300 z-10">
                 <h3 className="text-primary-850 dark:text-white font-bold px-4 py-2">
@@ -108,7 +108,7 @@ const Header = ({ isLightMode, toggleTheme }) => {
               </div>
             )}
           </div>
-        )}
+        )} */}
 
         {/* Theme Toggle Button */}
         <button onClick={toggleTheme} className="h-10 w-10 rounded-lg p-2">
