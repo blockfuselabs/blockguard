@@ -144,7 +144,7 @@ const RecoveryGuess = () => {
           />
           <input
             type="text"
-            className={`rounded-lg w-20 text-center ${errors["11"] ?"border-red-700": "border-none"}`}
+            className={`rounded-lg w-21 text-center ${errors["11"] ?"border-red-700": "border-none"}`}
             placeholder=""
             {...register("11", {validate: (value) => {
               if(!value) return "All field are required"
