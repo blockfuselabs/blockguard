@@ -79,8 +79,6 @@
 }
 
 .navigation ul li.active a .circle {
-    transition: .5s;
-    transition-delay: .2s;
     transform: translateY(-40px) scale(1);
 }
 

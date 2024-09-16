@@ -48,12 +48,12 @@ const SignUp = () => {
         </div>
         <div className='flex flex-col items-center space-y-5'>
           <button
-            className='bg-gradient-to-r from-primary-50 via-primary-200 to-primary-300 text-slate-700 dark:text-white w-[250px] py-2 rounded-full'
+            className='bg-primary-850 hover:bg-opacity-70 text-slate-700 dark:text-white w-[250px] py-2 rounded-full'
             onClick={handleCreateWallet}
           >
             Create a new wallet
           </button>
-          <button
+          {/* <button
             className='border-2 border-primary-300 text-slate-700 dark:text-white w-[250px] py-2 rounded-full'
             onClick={handleImportWallet}
           >

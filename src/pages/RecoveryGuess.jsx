@@ -53,11 +53,11 @@ const RecoveryGuess = () => {
         confirm secret recovery phrase
       </h2>
       <form className="flex flex-wrap justify-between gap-2 pt-4 px-2 mb-4" onSubmit={handleSubmit(onSubmit)} noValidate>
-      <div className="h-[236px] mx-auto mt-8 text-center w-[319px] rounded-[10px] bg-primary-300">
-        <div className="flex flex-wrap justify-between gap-2 pt-4 px-2 mb-4">
+      <div className="h-[200px] mx-auto mt-8 text-center w-[319px] py-4 rounded-[10px] bg-primary-850 dark:bg-slate-700">
+        <div className="flex flex-wrap  justify-between gap-4 pt-4 px-4 mb-4">
           <input
             type="text"
-            className={`rounded-lg w-20 text-center ${errors["1"] ?"border-red-700": "border-none"}`}
+            className={`rounded-lg dark:text-white dark:bg-slate-500 w-20 text-center ${errors["1"] ?"border-red-700": "border-none"}`}
             placeholder=""
             {...register("1", {validate: (value) => {
               if(!value) return "All field are required"
@@ -65,7 +65,7 @@ const RecoveryGuess = () => {
           />
           <input
             type="text"
-            className={`rounded-lg w-20 text-center ${errors["2"] ?"border-red-700": "border-none"}`}
+            className={`rounded-lg w-20 dark:text-white dark:bg-slate-500  text-center ${errors["2"] ?"border-red-700": "border-none"}`}
             placeholder=""
             {...register("2", {validate: (value) => {
               if(!value) return "All field are required"
@@ -73,7 +73,7 @@ const RecoveryGuess = () => {
           />
           <input
             type="text"
-            className={`rounded-lg w-20 text-center ${errors["3"] ?"border-red-700": "border-none"}`}
+            className={`rounded-lg w-20 dark:text-white dark:bg-slate-500  text-center ${errors["3"] ?"border-red-700": "border-none"}`}
             placeholder=""
             {...register("3", {validate: (value) => {
               if(!value) return "All field are required"
@@ -81,7 +81,7 @@ const RecoveryGuess = () => {
           />
           <input
             type="text"
-            className={`rounded-lg w-20 text-center ${errors["4"] ?"border-red-700": "border-none"}`}
+            className={`rounded-lg w-20 dark:text-white dark:bg-slate-500  text-center ${errors["4"] ?"border-red-700": "border-none"}`}
             placeholder=""
             {...register("4", {validate: (value) => {
               if(!value) return "All field are required"
@@ -89,7 +89,7 @@ const RecoveryGuess = () => {
           />
           <input
             type="text"
-            className={`rounded-lg w-20 text-center ${errors["5"] ?"border-red-700": "border-none"}`}
+            className={`rounded-lg w-20  dark:text-white dark:bg-slate-500 text-center ${errors["5"] ?"border-red-700": "border-none"}`}
             placeholder=""
             {...register("5", {validate: (value) => {
               if(!value) return "All field are required"
@@ -97,7 +97,7 @@ const RecoveryGuess = () => {
           />
           <input
             type="text"
-            className={`rounded-lg w-20 text-center ${errors["6"] ?"border-red-700": "border-none"}`}
+            className={`rounded-lg w-20 dark:text-white dark:bg-slate-500  text-center ${errors["6"] ?"border-red-700": "border-none"}`}
             placeholder=""
             {...register("6", {validate: (value) => {
               if(!value) return "All field are required"
@@ -105,7 +105,7 @@ const RecoveryGuess = () => {
           />
           <input
             type="text"
-            className={`rounded-lg w-20 text-center ${errors["7"] ?"border-red-700": "border-none"}`}
+            className={`rounded-lg w-20 dark:text-white dark:bg-slate-500  text-center ${errors["7"] ?"border-red-700": "border-none"}`}
             placeholder=""
             {...register("7", {validate: (value) => {
               if(!value) return "All field are required"
@@ -113,7 +113,7 @@ const RecoveryGuess = () => {
           />
           <input
             type="text"
-            className={`rounded-lg w-20 text-center ${errors["8"] ?"border-red-700": "border-none"}`}
+            className={`rounded-lg w-20 dark:text-white dark:bg-slate-500  text-center ${errors["8"] ?"border-red-700": "border-none"}`}
             placeholder=""
             {...register("8", {validate: (value) => {
               if(!value) return "All field are required"
@@ -121,7 +121,7 @@ const RecoveryGuess = () => {
           />
           <input
             type="text"
-            className={`rounded-lg w-20 text-center ${errors["9"] ?"border-red-700": "border-none"}`}
+            className={`rounded-lg w-20 dark:text-white dark:bg-slate-500  text-center ${errors["9"] ?"border-red-700": "border-none"}`}
             placeholder=""
             {...register("9", {validate: (value) => {
               if(!value) return "All field are required"
@@ -129,7 +129,7 @@ const RecoveryGuess = () => {
           />
           <input
             type="text"
-            className={`rounded-lg w-20 text-center ${errors["10"] ?"border-red-700": "border-none"}`}
+            className={`rounded-lg w-20 dark:text-white dark:bg-slate-500  text-center ${errors["10"] ?"border-red-700": "border-none"}`}
             placeholder=""
             {...register("10", {validate: (value) => {
               if(!value) return "All field are required"
@@ -137,7 +137,7 @@ const RecoveryGuess = () => {
           />
           <input
             type="text"
-            className={`rounded-lg w-20 text-center ${errors["11"] ?"border-red-700": "border-none"}`}
+            className={`rounded-lg w-20 dark:text-white dark:bg-slate-500  text-center ${errors["11"] ?"border-red-700": "border-none"}`}
             placeholder=""
             {...register("11", {validate: (value) => {
               if(!value) return "All field are required"
@@ -145,7 +145,7 @@ const RecoveryGuess = () => {
           />
           <input
             type="text"
-            className={`rounded-lg w-20 text-center ${errors["12"] ?"border-red-700": "border-none"}`}
+            className={`rounded-lg w-20 dark:text-white dark:bg-slate-500  text-center ${errors["12"] ?"border-red-700": "border-none"}`}
             placeholder=""
             {...register("12", {validate: (value) => {
               if(!value) return "All field are required"
@@ -163,7 +163,7 @@ const RecoveryGuess = () => {
       </div>
       <button
         type="submit"
-        className="mt-6 ml-11 text-white text-lg rounded-3xl px-2 py-1 w-[251px] bg-gradient-to-r from-primary-50 to-primary-100 hover:bg-opacity-75"
+        className="mt-6 ml-11 text-slate-700 dark:text-white text-lg rounded-3xl px-2 py-1 w-[251px] bg-primary-850 hover:bg-opacity-75"
       >
         Next
       </button>

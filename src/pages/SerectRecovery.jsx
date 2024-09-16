@@ -114,7 +114,7 @@ const SecretRecovery = () => {
         </div>
       </div>
       <button
-        className="mt-2 text-slate-700 dark:text-white rounded-full py-2 w-[250px] bg-emerald-500 hover:bg-opacity-75"
+        className="mt-2 text-slate-700 dark:text-white rounded-full py-2 w-[250px] bg-primary-850 hover:bg-opacity-75"
         onClick={handleSecretGuess}
       >
         Next
