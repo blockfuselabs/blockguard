@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 import { useNavigate, useLocation } from "react-router-dom";
 import blockies from "ethereum-blockies";
+import bcrypt from 'bcryptjs';
 import { generateMnemonic, createHdWallet } from "../utils/walletUtils";
 
 const CreatePassword = () => {
@@ -11,6 +12,12 @@ const CreatePassword = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const hashPassword = async (password) => {
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    return hashedPassword;
+  };
   
   const navigate = useNavigate();
 
@@ -65,8 +72,11 @@ const CreatePassword = () => {
       let accounts = [
         { name: "Account 1", publicAddress: address, profilePicUrl: blockies.create({ seed: address }).toDataURL() }
       ];
+
+      const hashedPassword = await hashPassword(password);
       
       localStorage.setItem('userAccounts', JSON.stringify(accounts));
+      localStorage.setItem('password', hashedPassword);
   
       navigate("/secret-recovery", {
         state: { mnemonic: Mnemonic }

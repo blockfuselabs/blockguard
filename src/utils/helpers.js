@@ -64,3 +64,13 @@ export function validateMnemonics(originalArray, userFilledArray) {
   
     return true;
   }
+
+export function isCreated() {
+  const privateKey = localStorage.getItem("privateKey");
+  
+  if (privateKey) {
+    return true;
+  }
+
+  return false;
+}

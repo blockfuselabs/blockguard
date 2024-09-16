@@ -53,7 +53,7 @@ const Header = ({ isLightMode, toggleTheme }) => {
       } px-7 py-2`}
     >
       {/* Backward Icon */}
-      {location.pathname !== "/" && (
+      {location.pathname !== "/" && location.pathname !== "/send-receive" && (
         <div className="flex bg-primary-850 dark:bg-slate-700 p-1 rounded-xl flex-grow-0">
           {/* Navigate one step back in the history */}
           <button onClick={() => navigate(-1)} className="text-primary-400">
