@@ -22,7 +22,7 @@ const Welcome = () => {
         </p>
         <div className="space-y-5 mt-10">
           <button
-            className="bg-green-500  font-semibold hover:bg-opacity-70 text-primary-400 w-[200px] py-2 rounded-full"
+            className="bg-primary-850  font-semibold hover:bg-opacity-70 text-primary-400 w-[200px] py-2 rounded-full"
             onClick={handleSignup}
           >
             Let&apos;s Start
