@@ -15,10 +15,10 @@ const Welcome = () => {
         <div className="flex items-center mt-20">
           <img src={Logo} alt="blockguard logo" className="w-24 mx-auto" />
         </div>
-        <h1 className="text-xl text-pink-400 font-semibold mt-10">
+        <h1 className="text-xl text-primary-850 dark:text-primary-850 font-semibold mt-10">
           Welcome to blockguard
         </h1>
-        <p className="text-white mt-5 break-words">
+        <p className="text-slate-700 dark:text-white mt-5 break-words">
           Sign up and come to the blockguard world
         </p>
         <div className="space-y-5 mt-10">
@@ -29,7 +29,7 @@ const Welcome = () => {
             Let's Start
           </button>
           <Link to="/login">
-            <p className="text-gray-400 underline mt-4 text-sm">
+            <p className="text-gray-600 dark:text-gray-200 underline mt-4 text-sm">
               I already have an account
             </p>
           </Link>

@@ -32,12 +32,19 @@ const CreatePassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-  
-    if (password !== confirmPassword) {
-      setErrorMessage("Passwords do not match");
+    // Check if password is at least 8 characters
+    if (password.length < 8) {
+      setErrorMessage("Password must be at least 8 characters long.");
       return;
     }
   
+    // Check if passwords match
+    if (password !== confirmPassword) {
+      setErrorMessage("Passwords do not match.");
+      return;
+    }
+  
+    // Check if terms are agreed to
     if (!isChecked) {
       setErrorMessage("Please agree to the terms first.");
       return;
@@ -45,26 +52,24 @@ const CreatePassword = () => {
   
     try {
       const HdWallet = createHdWallet();
-      const Mnemonic= HdWallet.mnemonic.phrase;
+      const Mnemonic = HdWallet.mnemonic.phrase;
       const address = HdWallet.address;
       const PrivateKey = HdWallet.privateKey;
-      const publicKey= HdWallet.publicKey;
-
-      //Save to local Storage
+      const publicKey = HdWallet.publicKey;
+  
+      // Save to local storage
       localStorage.setItem('mnemonic', Mnemonic);
-      localStorage.setItem("address", address)
-      localStorage.setItem("privateKey", PrivateKey)
-      localStorage.setItem("PublicKey", publicKey)
-
+      localStorage.setItem("address", address);
+      localStorage.setItem("privateKey", PrivateKey);
+      localStorage.setItem("PublicKey", publicKey);
+  
       // Example account data
       let accounts = [
         { name: "Account 1", publicAddress: address, profilePicUrl: blockies.create({ seed: address }).toDataURL() }
       ];
       
       localStorage.setItem('userAccounts', JSON.stringify(accounts));
-
-      
-      
+  
       navigate("/secret-recovery", {
         state: { mnemonic: Mnemonic }
       });
@@ -74,13 +79,14 @@ const CreatePassword = () => {
     }
   };
   
+  
 
   return (
     <div className="flex flex-col items-center mt-5">
       {/* Row One */}
-      <div className="text-center text-primary-400">
-        <h1 className="text-xl mb-2">Create Password</h1>
-        <p className="text-sm m-5">
+      <div className="text-center">
+        <h1 className="text-xl text-primary-850 dark:text-primary-850 mb-2">Create Password</h1>
+        <p className="text-sm m-5 text-slate-700 dark:text-white">
           This password will unlock your Blockguard wallet only on this device.
           Blockguard cannot recover this password.
         </p>
@@ -93,7 +99,7 @@ const CreatePassword = () => {
             type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)} // Update password state
-            className="border-2 border-gray-300 bg-transparent rounded-full px-4 text-primary-400 text-sm p-2 w-full pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border-2 border-gray-300 bg-transparent rounded-full px-4 text-slate-700 dark:text-white text-sm p-2 w-full pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="New Password (8 characters min)"
           />
           <div
@@ -101,9 +107,9 @@ const CreatePassword = () => {
             onClick={togglePasswordVisibility}
           >
             {showPassword ? (
-              <IoEyeOffOutline className="text-white" />
+              <IoEyeOffOutline className="text-slate-700 dark:text-white" />
             ) : (
-              <IoEyeOutline className="text-white" />
+              <IoEyeOutline className="text-slate-700 dark:text-white" />
             )}
           </div>
         </div>
@@ -113,7 +119,7 @@ const CreatePassword = () => {
             type={showConfirmPassword ? "text" : "password"}
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)} // Update confirm password state
-            className="border-2 border-gray-300 bg-transparent rounded-full text-primary-400 px-4 text-sm p-2 w-full pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border-2 border-gray-300 bg-transparent rounded-full text-slate-700 dark:text-white px-4 text-sm p-2 w-full pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Confirm Password"
           />
           <div
@@ -121,9 +127,9 @@ const CreatePassword = () => {
             onClick={toggleConfirmPasswordVisibility}
           >
             {showConfirmPassword ? (
-              <IoEyeOffOutline className="text-white" />
+              <IoEyeOffOutline className="text-slate-700 dark:text-white" />
             ) : (
-              <IoEyeOutline className="text-white" />
+              <IoEyeOutline className="text-slate-700 dark:text-white" />
             )}
           </div>
         </div>
@@ -138,13 +144,13 @@ const CreatePassword = () => {
             className="w-5 h-5 ml-5"
             onChange={handleCheckbox}
           />
-          <p className="text-sm text-primary-400 p-6">
+          <p className="text-sm text-slate-700 dark:text-white p-6">
             I understand that Blockguard cannot recover this password for me.{" "}
             <span className="text-blue-500 underline">Learn more</span>
           </p>
         </div>
         <button
-          className="bg-[#50C878] text-primary-400 w-[200px] py-2 rounded-full"
+          className="bg-primary-850 text-slate-700 dark:text-white w-[200px] py-2 rounded-full"
           onClick={handleSubmit}
         
         >

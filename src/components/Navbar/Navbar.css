@@ -1,10 +1,11 @@
-.navigation {
+/* Default light mode styles */
+.navigation { 
     position: fixed;
     bottom: 0;
     left: 0;
     width: 350px;
     height: 70px;
-    background: #50C878;
+    background: #50C878; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,19 +42,19 @@
     line-height: 70px;
     font-size: 1.4em;
     text-align: center;
-    color: #fff;
+    color: #fff; 
     transition: .5s;
 }
 
 .navigation ul li.active a .icon {
     transform: translateY(-40px);
     z-index: 1;
-    color: #fff;
+    color: #fff; 
 }
 
 .navigation ul li a .text {
     position: absolute;
-    color: #fff;
+    color: #fff; 
     font-weight: 600;
     font-size: .9em;
     opacity: 0;
@@ -64,7 +65,7 @@
 .navigation ul li.active a .text {
     opacity: 1;
     transform: translateY(20px);
-    color: #fff;
+    color: #fff; 
 }
 
 .navigation ul li a .circle {
@@ -72,9 +73,8 @@
     display: block;
     width: 45px;
     height: 45px;
-    background: #5dd0c3;
+    background: #50C878; 
     border-radius: 50%;
-    /* border: 6px solid #221F3A; */
     transform: translateY(-38px) scale(0);
 }
 
@@ -84,57 +84,27 @@
     transform: translateY(-40px) scale(1);
 }
 
-/* .indicator {
-    position: absolute;
-    top: -40px;
-    width: 60px;
-    height: 6d0px;
-    background-color: #8020EF;
-    border: 18px solid #221F3A;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    transition: .5s;
-} 
-
-.indicator::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -22px;
-    width: 20px;
-    height: 20px;
-    background: transparent;
-    border-top-right-radius:20px ;
+/* Dark mode styles */
+.dark .navigation {
+    background: #1c2c3c; 
 }
 
-.indicator::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: -22px;
-    width: 20px;
-    height: 20px;
-    background: transparent;
-    border-top-right-radius:20px ;
-} */
-
-.navigation ul li:nth-child(1).active~.indicator {
-    transform: translateX(calc(60px * 0));
+.dark .navigation ul li a .icon {
+    color: #ddd; 
 }
 
-.navigation ul li:nth-child(2).active~.indicator {
-    transform: translateX(calc(60px * 1));
+.dark .navigation ul li.active a .icon {
+    color: #ddd;
 }
 
-.navigation ul li:nth-child(3).active~.indicator {
-    transform: translateX(calc(60px * 2));
+.dark .navigation ul li a .text {
+    color: #ddd; 
 }
 
-.navigation ul li:nth-child(4).active~.indicator {
-    transform: translateX(calc(60px * 3));
+.dark .navigation ul li.active a .text {
+    color: #ddd; 
 }
 
-.navigation ul li:nth-child(5).active~.indicator {
-    transform: translateX(calc(60px * 4));
+.dark .navigation ul li a .circle {
+    background: #1c2c3c; 
 }
