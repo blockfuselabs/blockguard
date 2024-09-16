@@ -27,7 +27,7 @@ const Welcome = () => {
           >
             Let&apos;s Start
           </button>
-          <Link to="/login">
+          <Link to="">
             <p className="text-gray-600 dark:text-gray-200 underline mt-4 text-sm">
               I already have an account
             </p>
