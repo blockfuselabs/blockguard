@@ -32,7 +32,7 @@ const SerectRocoveryHidden = () => {
       </div>
     
       <button
-        className="mt-2 text-white rounded-full py-2 w-[250px] bg-emerald-500 hover:bg-opacity-76"
+        className="mt-2 text-white rounded-full py-2 w-[250px] bg-emerald-500 hover:bg-opacity-75"
       onClick={handleSecretRecovery}>
         Next
       </button>
