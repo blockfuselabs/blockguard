@@ -1,14 +1,13 @@
 import {ethers} from 'ethers';
 
 // Function goes to the Create-Page
-// Generates a new 12-word mnemonic phrase from 16 random bytes of entropy
+// Generates a 12-word mnemonic phrase using 16 random bytes of entropy
 export function generateMnemonic() {
     let randomEntropyBytes = ethers.utils.randomBytes(16);
     
     return ethers.utils.entropyToMnemonic(randomEntropyBytes);
 }
-// Function goes to the Create-Page
-// Creates a new HD (Hierarchical Deterministic) wallet from the generated mnemonic
+// Creates a new Hierarchical Deterministic (HD) wallet from a mnemonic phrase
 export function createHdWallet() {
     const mnemonic = generateMnemonic();
     const HdWallet = ethers.utils.HDNode.fromMnemonic(mnemonic);
@@ -91,8 +90,8 @@ export async function signTX2(data) {
 
     return txHash;
 }
-// Send Page
-// Sends a transaction to a specific address on the Sepolia testnet
+// Creating function that signs and approve transaction
+// Executes a transaction to a designated address on the Sepolia testnet
 export async function sendTransaction(amount, receiver) {
     const privateKey = localStorage.getItem("privateKey");
     console.log(privateKey)
@@ -157,7 +156,7 @@ export async function sendTX(data) {
     // Attach the provider to the wallet
     const signer = new ethers.Wallet(privateKey, provider);
 
-    // Send the transaction
+    // Send the transaction and also catching for errors
     try {
         const txResponse = await signer.sendTransaction(data);
         console.log("Transaction sent:", txResponse);
@@ -194,14 +193,3 @@ export async function sendTX2(data) {
     }
 }
     
-/*
-// Transaction data
-const txData = {
-    to: "0xc53c03Dff744805f22A607AC05b1e14058a4ee1D", // Recipient address
-    value: ethers.utils.parseEther("0.01"), // Amount to send in Ether
-    chainId: 11155111 // Sepolia testnet chain ID
-};
-
-// Call the sendTX function
-sendTX(txData).catch((error) => console.error("Error:", error));
-*/

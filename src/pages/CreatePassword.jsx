@@ -14,20 +14,18 @@ const CreatePassword = () => {
   
   const navigate = useNavigate();
 
-  // Handle checkbox
+  
   const handleCheckbox = (e) => {
     setIsChecked(e.target.checked);
   };
 
-  // Toggle functions for password visibility
+  
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
   const toggleConfirmPasswordVisibility = () =>
     setShowConfirmPassword(!showConfirmPassword);
 
 
-  // const handleSubmit = () =>{
-  //   navigate("/secret-recovery")
-  // }
+
   
   const handleSubmit = async (e) => {
     e.preventDefault();

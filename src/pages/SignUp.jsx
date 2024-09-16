@@ -13,34 +13,18 @@ const SignUp = () => {
 
   const handleCreateWallet = () => {
   if (isChecked) {
-    // Hash the password using CryptoJS
-    // const hashedPassword = CryptoJS.SHA256(password).toString();
-    // console.log('Hashed Password:', hashedPassword);
-
-    // Proceed to the next page
     navigate('/create-password'); 
   } else {
     alert('Please agree to the terms first.');
   }
 };
-
-// const handleSubmit = async (e) => {
-//   e.preventDefault();
-//   try{
-//     const result = await ('https://block-guard-wallet.onrender.com/wallets/create-new-wallet', {
-//       p
-//     })
-//   }
-// }
-
-  const handleImportWallet = () => {
-    if (isChecked) {
-      navigate('/import-wallet'); 
-    } else {
-      alert('Please agree to the terms first.');
-    }
-  };
-
+  // const handleImportWallet = () => {
+  //   if (isChecked) {
+  //     navigate('/import-wallet'); 
+  //   } else {
+  //     alert('Please agree to the terms first.');
+  //   }
+  // };
   return (
     <div className='flex flex-col items-center justify-center mt-8'>
       <div className='flex flex-col items-center space-y-2'>
@@ -74,7 +58,7 @@ const SignUp = () => {
             onClick={handleImportWallet}
           >
             Import an existing wallet
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
