@@ -5,20 +5,20 @@ import { BsSendFill } from "react-icons/bs";
 import { MdCallReceived } from "react-icons/md";
 import { FaEthereum } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { getBalance, hexToDecimal } from "../../utils/walletUtils";
+import { getBalance } from "../../utils/walletUtils";
 import axios from "axios";
 import { ethers } from "ethers";
 
 const networkColors = {
-  Ethereum: "#627EEA", 
-  Sepolia: "#F7931A",  
+  Ethereum: "#627EEA",
+  Sepolia: "#F7931A",
 };
 
 // Home Component
 const Home = () => {
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedNetwork, setSelectedNetwork] = useState({ name: "Ethereum", color: networkColors["Ethereum"] });
+  const [selectedNetwork, setSelectedNetwork] = useState({ name: "Ethereum", symbol: "ETH", color: networkColors["Ethereum"] });
   const [networks, setNetworks] = useState([]);
   const [balance, setBalance] = useState(0);
   const [ethPrice, setEthPrice] = useState(0);
@@ -26,8 +26,8 @@ const Home = () => {
   useEffect(() => {
     const fetchNetwork = async () => {
       const fetchedNetwork = [
-        { name: "Ethereum" },
-        { name: "Sepolia" },
+        { name: "Ethereum", symbol: "ETH" },
+        { name: "Sepolia", symbol: "SepoliaETH" },
       ];
 
       const networksWithColors = fetchedNetwork.map(network => ({
@@ -40,82 +40,67 @@ const Home = () => {
     fetchNetwork();
   }, []);
 
- // Fetch ETH price in USD from CoinGecko
- const fetchEthPrice = async () => {
-  try {
-    const response = await axios.get("https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd");
-    const price = response.data.ethereum.usd;
-    setEthPrice(price);
-  }catch (error){
-    console.error(error)
-  }
- };
+  // Fetch ETH price in USD from CoinGecko
+  const fetchEthPrice = async () => {
+    try {
+      const response = await axios.get("https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd");
+      const price = response.data.ethereum.usd;
+      setEthPrice(price);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
- useEffect (()=>{
-  fetchEthPrice();
- },[])
+  useEffect(() => {
+    fetchEthPrice();
+  }, []);
+
+  useEffect(() => {
+    const savedNetwork = localStorage.getItem("selectedNetwork");
+    if (savedNetwork) {
+      setSelectedNetwork(JSON.parse(savedNetwork));
+    }
+
+    const savedBalance = localStorage.getItem("balance");
+    if (savedBalance) {
+      setBalance(parseFloat(savedBalance));
+    }
+  }, []);
 
   // Fetch the balance based on the selected network
-  // useEffect(() => {
-  //   const fetchBalance = async () => {
-  //     try {
-  //       const currentAccount = JSON.parse(localStorage.getItem("userAccounts"))[0];
-        
-  //       const network = selectedNetwork.name.toLowerCase();
-  //       const address = currentAccount.publicAddress;
-  //       console.log(network)
-  //       const balanceHex = await getBalance(network, address);
-  //       console.log(`BH: ${balanceHex/1e18}`)
-  //       const etherBalance = hexToDecimal(balanceHex) / 1e18;
-  //       console.log(`EB: ${etherBalance}`)
-  //       setBalance(etherBalance);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   fetchBalance();
-  // }, [selectedNetwork]);
-
-  const hasFetched = useRef(false);
-
   useEffect(() => {
     const fetchBalance = async () => {
       try {
-          const currentAccount = JSON.parse(localStorage.getItem("userAccounts"))[0];
-          
-          const network = selectedNetwork.name.toLowerCase();
-          const address = currentAccount.publicAddress;
-          
-          const balanceBigNumber = await getBalance(network, address);
-          
-          console.log(`Balance in Wei (BigNumber): ${balanceBigNumber}`);
-          console.log(`Balance in Hex: ${balanceBigNumber._hex}`);
-          
-          const etherBalance = ethers.utils.formatEther(balanceBigNumber);
-          
-          console.log(`Balance in Ether: ${etherBalance}`);
-          
-          setBalance(parseFloat(etherBalance));
+        const currentAccount = JSON.parse(localStorage.getItem("userAccounts"))[0];
+        const network = selectedNetwork.name.toLowerCase();
+        const address = currentAccount.publicAddress;
+
+        const balanceBigNumber = await getBalance(network, address);
+        const etherBalance = ethers.utils.formatEther(balanceBigNumber);
+
+        setBalance(parseFloat(etherBalance));
+        localStorage.setItem("balance", parseFloat(etherBalance));
       } catch (error) {
         console.error(error);
       }
     };
+
     fetchBalance();
   }, [selectedNetwork]);
-  
 
   // Toggle the dropdown
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  // Handle network selection and fetch balance
+  // Handle network selection and save the selected network to localStorage
   const selectNetwork = (network) => {
     setSelectedNetwork(network);
+    localStorage.setItem("selectedNetwork", JSON.stringify(network));
     setIsDropdownOpen(false);
   };
 
-  const dollarEquivalent = (balance * ethPrice).toFixed(2)
+  const dollarEquivalent = (balance * ethPrice).toFixed(2);
 
   return (
     <div className="flex flex-col items-center text-center mt-2 space-y-5">
@@ -184,8 +169,8 @@ const Home = () => {
                 <FaEthereum />
               </span>
               <div className="flex flex-col items-start">
-                <h1 className="text-slate-700 dark:text-white font-semibold">ETH</h1>
-                <p className="text-slate-700 dark:text-white">Ethereum</p>
+                <h1 className="text-slate-700 dark:text-white font-semibold">{selectedNetwork.symbol}</h1>
+                <p className="text-slate-700 dark:text-white">{selectedNetwork.name}</p>
               </div>
             </div>
             <div>
