@@ -6,7 +6,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 const Header = ({ isLightMode, toggleTheme }) => {
   const location = useLocation();
   const navigate = useNavigate(); // Use useNavigate to access navigation functionality
-  // const [notifications, setNotifications] = useState([]);
+  const [notifications, setNotifications] = useState([]);
   // const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [notificationId, setNotificationId] = useState(0);
 
@@ -49,7 +49,7 @@ const Header = ({ isLightMode, toggleTheme }) => {
   return (
     <div
       className={`flex items-center ${
-        isLightMode ? "bg-slate-800" : "bg-gray-100"
+        !isLightMode ? "bg-slate-800" : "bg-gray-100"
       } px-7 py-2`}
     >
       {/* Backward Icon */}

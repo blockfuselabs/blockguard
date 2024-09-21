@@ -1,6 +1,6 @@
 import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 
@@ -46,7 +46,7 @@ function AppRoutes({ isLightMode, toggleTheme }) {
   return (
     <>
     <ToastContainer />
-    <div className={`w-[350px] h-[600px] overflow-hidden ${isLightMode ? "bg-slate-800 text-primary-950" : "bg-gray-100"}`}>
+    <div className={`w-[350px] h-[600px] overflow-hidden ${!isLightMode ? "bg-slate-800 text-primary-950" : "bg-gray-100"}`}>
       <Header isLightMode={isLightMode} toggleTheme={toggleTheme} />
       <Routes>
         <Route path="/" element={<Welcome />} />
@@ -63,7 +63,6 @@ function AppRoutes({ isLightMode, toggleTheme }) {
         <Route path="/theme" element={<Theme />} />
         <Route path="/seed-phrase" element={<SeedPhrase />} />
         <Route path="/private-key" element={<PrivateKey />} />
-       
 
         <Route path="/signup" element={<SignUp />} />
         <Route path="/create-password" element={<CreatePassword />} />
@@ -80,19 +79,26 @@ function AppRoutes({ isLightMode, toggleTheme }) {
 }
 
 function App() {
-  const [isLightMode, setIsLightMode] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+    return savedTheme === "light";
+  });
 
-  // Function to toggle between dark and light mode
   const toggleTheme = () => {
-    setIsLightMode(!isLightMode);
-    if (!isLightMode) {
-      document.body.classList.add("dark");
-      document.body.classList.remove("light");
-    } else {
+    setIsLightMode((prevMode) => !prevMode);
+  };
+
+  useEffect(() => {
+    if (isLightMode) {
       document.body.classList.add("light");
       document.body.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    } else {
+      document.body.classList.add("dark");
+      document.body.classList.remove("light");
+      localStorage.setItem("theme", "dark");
     }
-  };
+  }, [isLightMode]);
   
 
   return (
